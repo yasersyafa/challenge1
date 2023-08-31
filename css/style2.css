@@ -1,0 +1,106 @@
+
+/* variable warna css */
+:root {
+    --mainColor: #058C42;
+}
+
+/* class css */
+.title{
+    text-align: center;
+    color: white;
+}
+.mt{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.md {
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--mainColor);
+    
+}
+.news {
+    padding: 100px;
+}
+.berita-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.berita-flex a{
+    border: 2px solid black;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: 600;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+    align-items: center;
+}
+.login {
+    background-color: white;
+    width: fit-content;
+    padding: 50px;
+    border-radius: 12px;
+
+    height: 75%;
+    overflow-y: scroll;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.login h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+form input, form button, form textarea, form select{
+    width: 400px;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid black;
+}
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 15px;
+}
+.option a {
+    text-decoration: none;
+}
+img{
+    width: 50%;
+}

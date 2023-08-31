@@ -1,0 +1,37 @@
+:root {
+    --mainColor: #058C42;
+}
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background-color: var(--mainColor);
+    
+}
+h1 {
+    text-align: center;
+    padding: 20px;
+}
+p {
+    margin-top: 55px;
+}
+img{
+    margin-top: 55px;
+    max-width: 50%;
+    height: auto;
+}
+.page{
+    background-color: white;
+    padding: 30px;
+    width: 65%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top: 0;
+    bottom: 0;
+}
