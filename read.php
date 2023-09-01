@@ -15,13 +15,19 @@ $fetch = mysqli_fetch_assoc($query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge</title>
     <link rel="stylesheet" href="dist/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="bg-main" >
+    <div class="absolute left-20 top-10" >
+        <a href="index.php#post">
+            <i class='bx bx-arrow-back bx-lg text-white' ></i>
+        </a>
+    </div>
     <div class="w-1/2 bg-white p-10 mx-auto h-screen overflow-y-auto">
         <h1 class="font-bold text-3xl text-center my-5" ><?= $fetch['judul_berita']; ?></h1>
         
         <hr>
-        <p class="text-xl my-5" ><span class="font-semibold" >Penulis:</span> <?= $fetch['nama_user']; ?></p>
+        <p class="text-xl my-5" ><span class="font-semibold" >Author:</span> <?= $fetch['nama_user']; ?></p>
         <img src="img/<?= $fetch['gambar_berita']; ?>" alt="" class="my-5" >
         <p class="my-5 text-xl" ><?= $fetch['isi_berita']; ?></p>
     </div>

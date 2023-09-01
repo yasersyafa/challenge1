@@ -56,7 +56,7 @@ if (isset($_POST['edit'])) {
                     <option value="<?= $row['id_kategori']; ?>"><?= $row['nama_kategori']; ?></option>
                 <?php endforeach; ?>
             </select>
-            <button type="submit" name="edit">Edit</button>   
+            <button type="submit" class="bg-main p-3 text-xl font-bold text-white rounded-xl" name="edit">Edit</button>   
             
         </form>
     </div>

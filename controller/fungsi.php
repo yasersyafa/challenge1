@@ -64,10 +64,22 @@ function register($data){
     $password = mysqli_real_escape_string($db, $data['password_pengguna']);
     $password2 = mysqli_real_escape_string($db, $data['password_pengguna2']);
 
+    $query2 = mysqli_query($db, "SELECT * FROM tb_user WHERE nama_user='$username'");
+
     if ($password != $password2) {
-        echo "<script>alert('Your password doesn't match! Please try again')</script>";
+        echo "<script>alert('Your password doesn't match! Please try again');</script>";
         return false;
     }
+
+    if (mysqli_num_rows($query2)===1) {
+        echo "<script>alert('username is already exist! Please try with another username');</script>";
+        return false;
+    }
+
+
+    
+    
+    
     $query = mysqli_query($db, "INSERT INTO tb_user VALUES ('','$username','$password')");
 
     return mysqli_affected_rows($db);

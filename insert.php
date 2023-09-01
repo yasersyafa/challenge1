@@ -6,7 +6,7 @@ require 'controller/fungsi.php';
 if (!isset($session)) {
     echo "<script>
         alert('Please login first to add a news');
-        document.location.href='index.php';
+        document.location.href='login.php';
     </script>";
 }
 

@@ -22,7 +22,7 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
 </head>
 <body >
     <!-- navbar -->
-    <section class="flex justify-between items-center px-36 py-10 bg-main text-white fixed left-0 right-0 top-0">
+    <section class="flex justify-between items-center px-36 py-10 bg-main text-white">
         <h1 class="text-2xl font-bold">NEWS PORTAL</h1>
         <div class="flex items-center justify-center gap-10 font-semibold">
             <a href="index.php">Home</a>
@@ -48,14 +48,14 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
     <hr>
 
     <!-- daftar berita -->
-    <section class="px-36 py-10 my-20" >
+    <section class="px-36 py-10 my-20" id="post" >
         <div class="flex justify-between items-center">
             <h2 class="text-4xl font-semibold" >Latest News</h2>
             <a href="insert.php" class="font-semibold border-2 border-black p-4 rounded-2xl" >Add News +</a>
         </div>
         <div data-aos="fade-down" data-aos-duration="1500" class="mt-20 grid grid-cols-4 mx-auto gap-10" >
             <?php foreach($query as $rows): ?>
-                <div class="hover:shadow-2xl transition duration-150 ease-in-out p-5 border-2 border-gray-400 rounded-xl flex flex-col justify-start gap-4" >
+                <div class="hover:shadow-2xl transition duration-150 ease-in-out z-0 relative p-5 border-2 bg-white border-gray-400 rounded-xl flex flex-col justify-start gap-4" >
                     <h3 class="font-bold text-xl" ><?= $rows['judul_berita']; ?></h3>
                     <p><span class="font-bold" >Author:</span> <?= $rows['nama_user']; ?></p>
                     <img src="img/<?= $rows['gambar_berita']; ?>" alt="" class="w-full max-h-[400px] rounded-md" >
