@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
             // set session
             $_SESSION['login'] = $username;
             echo "<script>
-                alert('Login successfully');
+                alert('Login Succesfully');
                 document.location.href='index.php';
             </script>";
             exit;

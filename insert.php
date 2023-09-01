@@ -19,12 +19,12 @@ if (isset($_POST['publish'])) {
 
     if (insert($_POST) > 0) {
         echo "<script>
-        alert('berita berhasil di publikasi');
+        alert('Sucessfully publish');
         document.location.href = 'index.php';
         </script>";
     }else{
         echo "<script>
-        alert('gagal publikasi');
+        alert('Fail publish');
         document.location.href = 'index.php';
         </script>";
     }

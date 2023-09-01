@@ -15,8 +15,10 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge</title>
     <link rel="stylesheet" href="dist/output.css">
-
+<!-- box icon -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- aos js -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body >
     <!-- navbar -->
@@ -51,7 +53,7 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
             <h2 class="text-4xl font-semibold" >Latest News</h2>
             <a href="insert.php" class="font-semibold border-2 border-black p-4 rounded-2xl" >Add News +</a>
         </div>
-        <div class="mt-20 grid grid-cols-4 mx-auto gap-10" >
+        <div data-aos="fade-down" data-aos-duration="1500" class="mt-20 grid grid-cols-4 mx-auto gap-10" >
             <?php foreach($query as $rows): ?>
                 <div class="hover:shadow-2xl transition duration-150 ease-in-out p-5 border-2 border-gray-400 rounded-xl flex flex-col justify-start gap-4" >
                     <h3 class="font-bold text-xl" ><?= $rows['judul_berita']; ?></h3>
@@ -60,13 +62,13 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
                     <p><span class="font-bold" >Tags: </span><?= $rows['nama_kategori'] ?></p>
                     
                     <div class="flex justify-between items-center mt-4" >
-                        <a href="read.php?id=<?= $rows['id_berita']; ?>" class="underline text-main hover:text-red-600" >Read News</a>
+                        <a href="read.php?id=<?= $rows['id_berita']; ?>" class="bg-main px-3 py-2 text-white rounded-md hover:bg-opacity-60" >Read News</a>
                         <?php if(isset($session)) { ?>
                             <?php if($session==$rows['nama_user']) { ?>
                             <div class="flex items-center gap-4">
-                                <a href="edit.php?id=<?= $rows['id_berita']; ?>" class="text-yellow-600" ><i class='bx bxs-message-alt-edit bx-sm' ></i></a>
+                                <a href="edit.php?id=<?= $rows['id_berita']; ?>" class="text-yellow-600 hover:opacity-50" ><i class='bx bxs-message-alt-edit bx-md' ></i></a>
                                 <?php 
-                                    echo "<a onClick=\"javascript:return confirm('Are you sure want to delete this?'); \" href='delete.php?id={$rows['id_berita']}' ><i class='bx bxs-trash bx-sm text-red-600'></i></a>";
+                                    echo "<a onClick=\"javascript:return confirm('Are you sure want to delete this?'); \" href='delete.php?id={$rows['id_berita']}' class='text-red-600 hover:opacity-50' ><i class='bx bxs-trash bx-md'></i></a>";
                                 ?>
                                 
                             </div>
@@ -78,5 +80,9 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
             <?php endforeach; ?>
         </div>
     </section>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 </html>

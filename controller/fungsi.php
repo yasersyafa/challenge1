@@ -57,6 +57,22 @@ function insert($data){
     return mysqli_affected_rows($db);
 }
 
+function register($data){
+    global $db;
+
+    $username = mysqli_real_escape_string($db, $data['nama_pengguna']);
+    $password = mysqli_real_escape_string($db, $data['password_pengguna']);
+    $password2 = mysqli_real_escape_string($db, $data['password_pengguna2']);
+
+    if ($password != $password2) {
+        echo "<script>alert('Your password doesn't match! Please try again')</script>";
+        return false;
+    }
+    $query = mysqli_query($db, "INSERT INTO tb_user VALUES ('','$username','$password')");
+
+    return mysqli_affected_rows($db);
+}
+
 function edit($data) {
     global $db;
 
