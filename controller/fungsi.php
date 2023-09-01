@@ -1,5 +1,5 @@
 <?php 
-$db = mysqli_connect("localhost", "root", "", "percobaan");
+$db = mysqli_connect("localhost", "root", "", "challenge1");
 
 
 function upload(){
@@ -38,7 +38,7 @@ function upload(){
 // function insert
 function insert($data){
     global $db;
-    $author = mysqli_real_escape_string($db, $data['penulis_berita']);
+    $author = $data['id_user'];
     $title = mysqli_real_escape_string($db, $data['judul_berita']);
     $isi = mysqli_real_escape_string($db, $data['isi_berita']);
 
@@ -61,7 +61,6 @@ function edit($data) {
     global $db;
 
     $id = $data['id'];
-    $penulis = mysqli_real_escape_string($db, $data['penulis_berita']);
     $title = mysqli_real_escape_string($db, $data['judul_berita']);
     $isi = mysqli_real_escape_string($db, $data['isi_berita']);
     $kategori = $data['kategori_berita'];
@@ -75,7 +74,7 @@ function edit($data) {
     }else{
         $gambar = upload();
     }
-    $query = mysqli_query($db, "UPDATE tb_berita SET judul_berita='$title', isi_berita='$isi', gambar_berita='$gambar', penulis_berita='$penulis', kategori_berita='$kategori' WHERE id_berita='$id'");
+    $query = mysqli_query($db, "UPDATE tb_berita SET judul_berita='$title', isi_berita='$isi', gambar_berita='$gambar', kategori_id='$kategori' WHERE id_berita='$id'");
     return mysqli_affected_rows($db);
 }
 ?>

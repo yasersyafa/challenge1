@@ -1,23 +1,25 @@
 <?php 
+session_start();
+$session = $_SESSION['login'];
 require 'controller/fungsi.php';
 
 $id = $_GET['id'];
 
-$query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb_kategori.id_kategori = tb_berita.kategori_berita WHERE id_berita='$id'");
+$query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb_kategori.id_kategori = tb_berita.kategori_id WHERE id_berita='$id'");
 $query2 = mysqli_query($db, "SELECT * FROM tb_kategori");
 $fetch = mysqli_fetch_assoc($query);
 
-$fetch2 = mysqli_num_rows($query2);
+$fetch2 = mysqli_fetch_assoc($query2);
 
 if (isset($_POST['edit'])) {
     if (edit($_POST) > 0) {
         echo "<script>
-        alert('berita berhasil di edit');
+        alert('News Successfully edit');
         document.location.href = 'index.php';
         </script>";
     }else{
         echo "<script>
-        alert('gagal edit berita');
+        alert('Edit Fail');
         document.location.href = 'index.php';
         </script>";
     }    
@@ -34,22 +36,22 @@ if (isset($_POST['edit'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge</title>
-    <link rel="stylesheet" href="css/style2.css">
+    <link rel="stylesheet" href="dist/output.css">
 </head>
-<body>
-    <div class="login">
-        <h1>Edit Berita</h1>
-        <form action="" method="post" enctype="multipart/form-data">
+<body class="bg-main" >
+    <div class="bg-white p-10 w-[50%] mx-auto text-center">
+        <h1 class="font-bold text-3xl" >Edit News</h1>
+        <form action="" method="post" enctype="multipart/form-data" class="flex flex-col justify-center gap-10 mt-5" >
             <input type="hidden" name="id" value="<?= $fetch['id_berita']; ?>">
             <input type="hidden" name="gambarOld" value="<?= $fetch['gambar_berita'] ?>">
-            <input type="text" name="penulis_berita" value="<?= $fetch['penulis_berita']; ?>" placeholder="nama penulis" required>
-            <input type="text" name="judul_berita" value="<?= $fetch['judul_berita']; ?>" placeholder="judul berita" autocomplete="off" required >
-            <textarea name="isi_berita" id="" rows="10" placeholder="Isi berita" required ><?= $fetch['isi_berita'] ?></textarea>
-            <img src="img/<?= $fetch['gambar_berita'] ?>" alt="">
-            <input type="file" name="gambar_berita" id="" >
-            <select name="kategori_berita" id="" required >
+            <input type="text" name="penulis_berita" class="p-4 border cursor-default border-black rounded-xl" value="<?= $session; ?>" readonly required>
+            <input type="text" name="judul_berita" class="p-4 border border-black rounded-xl" value="<?= $fetch['judul_berita']; ?>" placeholder="judul berita" autocomplete="off" required >
+            <textarea name="isi_berita" id="" rows="10" placeholder="Isi berita" required class="p-4 border border-black rounded-xl" ><?= $fetch['isi_berita'] ?></textarea>
+            <img src="img/<?= $fetch['gambar_berita'] ?>" alt="" class="rounded-xl w-1/2 mx-auto" >
+            <input type="file" class="p-4 border border-black rounded-xl" name="gambar_berita" id="" >
+            <select name="kategori_berita" class="p-4 border border-black rounded-xl" id="" required >
                 <option disabled >--select category--</option>
-                <option value="<?= $fetch['kategori_berita']; ?>"><?= $fetch['nama_kategori']; ?></option>
+                <option value="<?= $fetch['kategori_id']; ?>"><?= $fetch['nama_kategori']; ?></option>
                 <?php foreach($query2 as $row): ?>
                     <option value="<?= $row['id_kategori']; ?>"><?= $row['nama_kategori']; ?></option>
                 <?php endforeach; ?>
