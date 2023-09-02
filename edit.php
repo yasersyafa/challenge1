@@ -37,8 +37,14 @@ if (isset($_POST['edit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Challenge</title>
     <link rel="stylesheet" href="dist/output.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body class="bg-main" >
+<div class="fixed left-20 top-10" >
+        <a href="admin.php">
+            <i class='bx bx-arrow-back bx-lg text-white' ></i>
+        </a>
+    </div>
     <div class="bg-white p-10 w-[50%] mx-auto text-center">
         <h1 class="font-bold text-3xl" >Edit News</h1>
         <form action="" method="post" enctype="multipart/form-data" class="flex flex-col justify-center gap-10 mt-5" >

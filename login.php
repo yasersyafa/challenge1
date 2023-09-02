@@ -21,13 +21,21 @@ if (isset($_POST['login'])) {
     if (mysqli_num_rows($login)===1) {
         $verif = mysqli_fetch_assoc($login);
         if ($password==$verif['password_user']) {
-            // set session
-            $_SESSION['login'] = $username;
-            echo "<script>
-                alert('Login Succesfully');
-                document.location.href='index.php';
-            </script>";
-            exit;
+            if ($verif['role']==='admin') {
+                $_SESSION['login'] = $username;
+                echo "<script>alert('Welcome to dashboard!');
+                    document.location.href='admin.php';
+                </script>";
+                exit;
+            }else{
+                $_SESSION['login'] = $username;
+                echo "<script>
+                    alert('Login Succesfully');
+                    document.location.href='index.php';
+                </script>";
+                exit;
+            }
+            
         }
     }
     $error = true;
@@ -47,7 +55,10 @@ if (isset($_POST['login'])) {
     
 </head>
 <body class="bg-main">
-
+    <section class="flex justify-center items-center px-36 py-10 mt-20 bg-main text-white fixed left-0 right-0 top-0 z-10">
+        <h1 class="text-4xl font-bold"><a href="index.php"><a href="index.php">NEWS PORTAL</a></a></h1>
+        
+    </section>
     <!-- form login -->
     <div class="bg-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-10 flex flex-col justify-center w-1/3">
         <h1 class="font-bold text-center text-3xl" >LOGIN FORM</h1>
@@ -57,7 +68,7 @@ if (isset($_POST['login'])) {
                 <input class="border-2 rounded-xl p-4 w-full" type="password" name="password_pengguna" placeholder="password" required >
                 <button class="bg-main rounded-xl w-full p-3 text-white font-bold text-2xl" type="submit" name="login">Login</button>
                 <?php if(isset($error)): ?>
-                    <p class="text-red-600 italic" >username/password salah</p>
+                    <p class="text-red-600 italic" >username/password is incorrect</p>
                 <?php endif; ?>    
                 <a href="register.php" class="font-semibold">Don't have any account? <span class="text-main">click here</span></a>
             </form>

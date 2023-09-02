@@ -52,7 +52,7 @@ function insert($data){
         return false;
     }
 
-    $insert = mysqli_query($db, "INSERT INTO tb_berita VALUES ('','$title','$isi','$gambar','$author','$kategori')");
+    $insert = mysqli_query($db, "INSERT INTO tb_berita VALUES ('','$title','$isi','$gambar',current_timestamp(),'$author','$kategori')");
 
     return mysqli_affected_rows($db);
 }
@@ -103,6 +103,22 @@ function edit($data) {
         $gambar = upload();
     }
     $query = mysqli_query($db, "UPDATE tb_berita SET judul_berita='$title', isi_berita='$isi', gambar_berita='$gambar', kategori_id='$kategori' WHERE id_berita='$id'");
+    return mysqli_affected_rows($db);
+}
+
+function insertcategory($data){
+    global $db;
+    $category = mysqli_real_escape_string($db, $data['nama_kategori']);
+
+    $cek = mysqli_query($db, "SELECT * FROM tb_kategori WHERE nama_kategori='$category'");
+    $verif = mysqli_fetch_assoc($cek);
+    if ($cek==$verif['nama_kategori']) {
+        echo "<script>
+            alert('The category is already exist!');
+        </script>";
+        return false;
+    }
+    $query = mysqli_query($db, "INSERT INTO tb_kategori VALUES('','$category')");
     return mysqli_affected_rows($db);
 }
 ?>
