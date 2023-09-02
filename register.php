@@ -37,11 +37,8 @@ if (isset($_POST['register'])) {
     
 </head>
 <body class="bg-main">
-    <section class="flex justify-between items-center px-36 py-10 bg-main text-white fixed left-0 right-0 top-0 z-10">
-        <h1 class="text-2xl font-bold">NEWS PORTAL</h1>
-        <div class="flex items-center justify-center gap-10 font-semibold">
-            <a href="index.php">Home</a>
-        </div>
+    <section class="flex justify-center items-center px-36 py-10 mt-10 bg-main text-white fixed left-0 right-0 top-0 z-10">
+        <h1 class="text-4xl font-bold"><a href="index.php"><a href="index.php">NEWS PORTAL</a></a></h1>    
     </section>
     <!-- form login -->
     <div class="bg-white absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl p-10 flex flex-col justify-center w-1/3">

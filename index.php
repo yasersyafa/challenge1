@@ -24,11 +24,19 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
         <h1 class="text-2xl font-bold">NEWS PORTAL</h1>
         <div class="flex items-center justify-center gap-10 font-semibold">
             <a href="index.php">Home</a>
+
+            <?php
+                $admin = mysqli_query($db,"SELECT * FROM tb_user WHERE nama_user='$session'");
+                $cekRole = mysqli_fetch_assoc($admin);
+
+                if($cekRole['role']=='admin'){
+            ?>
+            <a href="admin.php" >Dashboard</a>
+            <?php } ?>
             
             <?php if(!isset($session)){ ?>
                 <a href="login.php" class="bg-blue-400 py-2 px-4 rounded-full hover:shadow-lg">Login</a>
             <?php }else { ?>
-                <a href=""><?= $session; ?></a>
                 <a href="logout.php" class="bg-blue-400 py-2 px-4 rounded-full hover:shadow-lg" >Log out</a>
             <?php } ?>
         </div>
@@ -66,6 +74,11 @@ $query = mysqli_query($db, "SELECT * FROM tb_berita INNER JOIN tb_kategori ON tb
                     
                     <div class="flex justify-between items-center mt-4" >
                         <a href="read.php?id=<?= $rows['id_berita']; ?>" class="bg-main px-3 py-2 text-white rounded-md hover:bg-opacity-60" >Read News</a>
+                        <?php if(isset($session)): ?>
+                        <form action="" method="post">
+                            <button type="submit"><i class='bx bx-heart bx-md text-red-600'></i></button>
+                        </form>
+                        <?php endif; ?>
                     </div>
                     
                 </div>

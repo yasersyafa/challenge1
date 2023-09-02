@@ -121,4 +121,14 @@ function insertcategory($data){
     $query = mysqli_query($db, "INSERT INTO tb_kategori VALUES('','$category')");
     return mysqli_affected_rows($db);
 }
+
+function editcategory($data){
+    global $db;
+    $id = $data['id_kategori'];
+    $category = mysqli_real_escape_string($db, $data['nama_kategori']);
+
+    $query = mysqli_query($db, "UPDATE tb_kategori SET nama_kategori='$category' WHERE id_kategori='$id'");
+
+    return mysqli_affected_rows($db);
+}
 ?>

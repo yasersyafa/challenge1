@@ -27,7 +27,8 @@ $fetch = mysqli_fetch_assoc($query);
         <h1 class="font-bold text-3xl text-center my-5" ><?= $fetch['judul_berita']; ?></h1>
         
         <hr>
-        <p class="text-xl my-5" ><span class="font-semibold" >Author:</span> <?= $fetch['nama_user']; ?></p>
+        <p class="text-xl my-5" ><span class="font-semibold" >Author:</span> <?= $fetch['nama_user']; ?> News Portal</p>
+        <p class="text-xl my-5" ><span class="font-semibold" >Date: </span><?= $fetch['tanggal_berita'] ?></p>
         <img src="img/<?= $fetch['gambar_berita']; ?>" alt="" class="my-5" >
         <p class="my-5 text-xl" ><?= $fetch['isi_berita']; ?></p>
     </div>
